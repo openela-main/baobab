@@ -1,0 +1,14 @@
+diff --git a/src/baobab-window.vala b/src/baobab-window.vala
+index 8dc0c94..c021646 100644
+--- a/src/baobab-window.vala
++++ b/src/baobab-window.vala
+@@ -307,7 +307,7 @@ namespace Baobab {
+                                      "Copyright \xc2\xa9 2011-2012 Ryan Lortie, Paolo Borelli, Stefano Facchini\n";
+ 
+             Gtk.show_about_dialog (this,
+-                                   "program-name", _("Baobab"),
++                                   "program-name", _("Disk Usage Analyzer"),
+                                    "logo-icon-name", "baobab",
+                                    "version", Config.VERSION,
+                                    "comments", _("A graphical tool to analyze disk usage."),
+
