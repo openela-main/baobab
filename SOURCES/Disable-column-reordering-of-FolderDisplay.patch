@@ -1,0 +1,58 @@
+From a3b597b7a2f02b4ba7466bfa1ea4a306a883728f Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Thu, 13 Jun 2024 11:50:30 +0200
+Subject: [PATCH] Disable column reordering of FolderDisplay
+
+Currently, it is possible to reorder columns of the `BaobabFolderDisplay`
+widget using drag and drop. However, there are some issues with this
+feature. The new column order is applied only to the first row and not to
+the others that are part of the separate `treeview` widget. Another
+problem	is that dragging the "Folder" column sometimes significantly
+increases the window width. Let's disable the column reordering until
+those issues are resolved.
+
+Related: https://issues.redhat.com/browse/RHEL-40874
+Related: https://issues.redhat.com/browse/RHEL-40875
+---
+ data/ui/baobab-folder-display.ui | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/data/ui/baobab-folder-display.ui b/data/ui/baobab-folder-display.ui
+index 7e585c7..6466b18 100644
+--- a/data/ui/baobab-folder-display.ui
++++ b/data/ui/baobab-folder-display.ui
+@@ -13,7 +13,6 @@
+       <object class="GtkTreeViewColumn" id="folder_column">
+         <property name="title" translatable="yes">Folder</property>
+         <property name="expand">True</property>
+-        <property name="reorderable">True</property>
+         <property name="sort_column_id">0</property>
+         <child>
+           <object class="GtkCellRendererPixbuf" id="folder_column_icon_renderer">
+@@ -35,7 +34,6 @@
+     <child>
+       <object class="GtkTreeViewColumn" id="size_column">
+         <property name="title" translatable="yes">Size</property>
+-        <property name="reorderable">True</property>
+         <property name="sort_column_id">2</property>
+         <child>
+           <object class="BaobabCellRendererSize" id="size_column_size_renderer">
+@@ -51,7 +49,6 @@
+     <child>
+       <object class="GtkTreeViewColumn" id="contents_column">
+         <property name="title" translatable="yes">Contents</property>
+-        <property name="reorderable">True</property>
+         <property name="sort_column_id">5</property>
+         <child>
+           <object class="BaobabCellRendererItems" id="contents_column_items_renderer">
+@@ -67,7 +64,6 @@
+     <child>
+       <object class="GtkTreeViewColumn" id="time_modified_column">
+         <property name="title" translatable="yes">Modified</property>
+-        <property name="reorderable">True</property>
+         <property name="sort_column_id">3</property>
+         <child>
+           <object class="BaobabCellRendererTime" id="modified_column_time_renderer">
+-- 
+2.45.1
+

@@ -2,12 +2,15 @@
 
 Name:           baobab
 Version:        40.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A graphical directory tree analyzer
 
 License:        GPLv2+ and GFDL
 URL:            https://wiki.gnome.org/Apps/Baobab
 Source0:        https://download.gnome.org/sources/baobab/40/%{name}-%{tarball_version}.tar.xz
+
+# https://issues.redhat.com/browse/RHEL-84271
+Patch:          Disable-column-reordering-of-FolderDisplay.patch
 
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libhandy-1)
@@ -58,6 +61,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/org.gnome.baobab.des
 
 
 %changelog
+* Wed Dec 03 2025 Ondrej Holy <oholy@redhat.com> - 40.0-4
+- Disable column reordering of FolderDisplay (RHEL-84271)
+
 * Mon Aug 09 2021 Mohan Boddu <mboddu@redhat.com> - 40.0-3
 - Rebuilt for IMA sigs, glibc 2.34, aarch64 flags
   Related: rhbz#1991688
